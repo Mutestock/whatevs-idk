@@ -2,6 +2,9 @@ use crate::overview::utils::custom_errors::InvalidSqlError;
 use postgres::{types::ToSql, Client, Error, NoTls};
 use serde::Deserialize;
 
+
+
+#[derive(Deserialize)]
 pub struct PostgresOptions {
     host: String,
     user: String,
