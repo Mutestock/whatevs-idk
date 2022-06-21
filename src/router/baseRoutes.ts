@@ -1,9 +1,9 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import HelloWorld from "../components/HelloWorld.vue";
+import Home from "../components/Home.vue";
 
 export const baseRouter = createRouter ({
     history: createWebHashHistory(),
     routes: [
-        { path: "/", component: HelloWorld }
+        { path: "/", component: Home }
     ]
 });

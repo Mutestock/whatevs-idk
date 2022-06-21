@@ -3,6 +3,9 @@
   windows_subsystem = "windows"
 )]
 
+mod gen;
+mod overview;
+
 fn main() {
   let context = tauri::generate_context!();
   tauri::Builder::default()
