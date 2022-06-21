@@ -64,6 +64,20 @@ impl PostgresOptions {
         }
         Ok(res)
     }
+
+    pub fn select_all_by_table_name(&self, table_name: String) -> Result<String, Error>{
+        let mut connection = self.get_connection().expect(&format!(
+            "Could not create database connection for select all by table_name: {}",
+            &table_name
+        ));
+        let rows = connection.query("SELECT * FROM $1", &[&table_name])?;
+        let mut res = String::new();
+        for row in rows.into_iter() {
+            res += &format!("{:?}", row);
+        }
+        Ok(res)
+    }
+
 }
 
 fn sql_create_table_is_valid_or_bust(sql: &str) -> Result<(), InvalidSqlError> {
