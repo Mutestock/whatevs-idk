@@ -74,6 +74,7 @@ dependencies = [
  "native-dialog",
  "neo4rs",
  "postgres",
+ "rand 0.8.5",
  "redis",
  "rusqlite",
  "scylla",

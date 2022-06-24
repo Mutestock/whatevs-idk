@@ -1,0 +1,15 @@
+version: "3"  
+services:
+  primary_db_tauri:
+    image: postgres:latest
+    container_name: primary_db_tauri
+    environment:
+      - POSTGRES_USER=tauri_test
+      - POSTGRES_PASSWORD=tauri_test
+      - POSTGRES_DB=tauri_test
+      - PGDATA=/var/lib/postgresql/data
+    ports:
+      - 51951:5432
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    

@@ -2,8 +2,6 @@ use crate::overview::utils::custom_errors::InvalidSqlError;
 use postgres::{types::ToSql, Client, Error, NoTls};
 use serde::Deserialize;
 
-
-
 #[derive(Deserialize)]
 pub struct PostgresOptions {
     host: String,
@@ -14,7 +12,13 @@ pub struct PostgresOptions {
 }
 
 impl PostgresOptions {
-    pub fn new(host: String, user: String, pwd: Option<String>, port: u16, db_name: String) -> Self {
+    pub fn new(
+        host: String,
+        user: String,
+        pwd: Option<String>,
+        port: u16,
+        db_name: String,
+    ) -> Self {
         Self {
             host,
             user,
@@ -65,7 +69,7 @@ impl PostgresOptions {
         Ok(res)
     }
 
-    pub fn select_all_by_table_name(&self, table_name: String) -> Result<String, Error>{
+    pub fn select_all_by_table_name(&self, table_name: String) -> Result<String, Error> {
         let mut connection = self.get_connection().expect(&format!(
             "Could not create database connection for select all by table_name: {}",
             &table_name
@@ -78,6 +82,13 @@ impl PostgresOptions {
         Ok(res)
     }
 
+    pub fn print_info(&self) -> Result<(), Box<dyn std::error::Error>> {
+        println!(
+            "Options info: {}, {}, {}, {}",
+            self.host, self.user, self.port, self.db_name
+        );
+        Ok(())
+    }
 }
 
 fn sql_create_table_is_valid_or_bust(sql: &str) -> Result<(), InvalidSqlError> {
