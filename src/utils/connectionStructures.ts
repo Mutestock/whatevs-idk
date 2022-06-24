@@ -5,7 +5,13 @@ export class PostgresOptions {
     port: number;
     db_name: string;
 
-    constructor(host: string, user: string, pwd: string | null, port: number, db_name: string) {
+    constructor(
+        host: string = "",
+        user: string = "",
+        pwd: string | null = null,
+        port: number = 5432,
+        db_name: string = "") {
+
         this.host = host;
         this.user = user;
         this.pwd = pwd;
