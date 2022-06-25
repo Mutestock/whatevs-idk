@@ -1,4 +1,5 @@
 use rand::Rng;
+use serde::Deserialize;
 
 use crate::overview::connection::postgres_connection::PostgresOptions;
 use std::fs::File;
@@ -20,7 +21,7 @@ pub fn invoke_postgres_select_all_query(table_name: u32) -> String {
     //pg_options
     //    .print_info()
     //    .expect("Somehow could not print pg_options info for select all query");
-    "aaaaaaah".to_owned();
+    "aaaaaaah".to_owned()
     //match pg_options.select_all_by_table_name(table_name) {
     //    Ok(v) => return v,
     //    Err(e) => return format!("Err: Postgres returned error: {}", e),
@@ -37,14 +38,43 @@ pub fn invoke_whatever(table_name: &str) -> String{
     "derp".to_owned()
 }
 
+#[derive(Deserialize)]
+pub struct Person{
+    name: String,
+    flerp: Option<String>
+}
+
+
+#[derive(Deserialize)]
+pub struct PgOptions {
+    host: String,
+}
+
+
+#[derive(Deserialize)]
+pub struct Shite{
+    host: String,
+}
 
 #[tauri::command]
-pub fn generate_password(length: u32) -> String{
-    let mut rng = rand::thread_rng();
-    let mut result = String::new();
-    for _x in 0..length {
-        result.push(CHARS[rng.gen_range(0..70)]);
-    }
-
-    result
+pub fn generate_password(length: &str, options: PgOptions) -> String{
+    //let mut rng = rand::thread_rng();
+    //let mut result = String::new();
+    //for _x in 0..32 {
+    //    result.push(CHARS[rng.gen_range(0..70)]);
+    //}
+//
+    //result
+    //let res = pg_options
+    //    .print_info()
+    //    .expect("Somehow could not print pg_options info for select all query");
+    //format!("table_name: {}, person_name: {}", length, person.name)
+    println!("Pg Host: {}", options.host);
+    println!("AAAAH");
+    format!("table_name: {}", length)
+    //match pg_options.select_all_by_table_name(length.to_owned()) {
+    //    Ok(v) => return v,
+    //    Err(e) => return format!("Err: Postgres returned error: {}", e),
+    //}
+    //res
 }

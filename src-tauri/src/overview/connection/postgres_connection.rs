@@ -82,12 +82,13 @@ impl PostgresOptions {
         Ok(res)
     }
 
-    pub fn print_info(&self) -> Result<(), Box<dyn std::error::Error>> {
-        println!(
+    pub fn print_info(&self) -> Result<String, Box<dyn std::error::Error>> {
+        let res = format!(
             "Options info: {}, {}, {}, {}",
             self.host, self.user, self.port, self.db_name
         );
-        Ok(())
+        println!("{}", res);
+        Ok(res)
     }
 }
 

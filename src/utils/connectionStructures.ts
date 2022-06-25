@@ -1,22 +1,23 @@
 export class PostgresOptions {
     host: string;
-    usr: string;
-    pwd: string | null;
-    port: number;
-    db_name: string;
+    //usr: string;
+    //pwd: string | null;
+    //port: number;
+    //db_name: string;
 
     constructor(
-        host: string = "",
-        usr: string = "",
-        pwd: string | null = null,
-        port: number = 5432,
-        db_name: string = "") {
+        host: string,
+        //usr: string,
+        //pwd: string,
+        //port: number,
+        //db_name: string
+        ) {
 
         this.host = host;
-        this.usr = usr;
-        this.pwd = pwd;
-        this.port = port;
-        this.db_name = db_name;
+        //this.usr = usr;
+        //this.pwd = pwd;
+        //this.port = port;
+        //this.db_name = db_name;
     }
 }
 
